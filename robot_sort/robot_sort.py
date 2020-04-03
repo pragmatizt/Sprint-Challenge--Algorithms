@@ -97,7 +97,6 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
 
 
 if __name__ == "__main__":
@@ -110,3 +109,22 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+
+"""
+PSEUDOCODE:
+1. Robot starts at [0], robot picks up item, light comes on
+2a. Robot compares item holding to next item on right [0] comparing to [1]
+    2b. If item robot is comparing to is > than item it is holding: do nothing, move to next item on right
+    2c. If item robot is comparing to is < than item it is holding, pick up new item
+3.  Recurse process through end of list
+4.  When can_move_right returns False, 
+4.  Go back to [0]  (can we do that?  Or do we have to move back element by element)
+5.  Move left until can_move_left returns False (this brings us back to our starting spot)
+6.  [implement counter to signify that this time we're starting at +1 position from 0th element]
+7.  pick up item in [1]th element, recurse process through end of list
+
+Hint: Bubble Sort would be a good method.
+
+"""
