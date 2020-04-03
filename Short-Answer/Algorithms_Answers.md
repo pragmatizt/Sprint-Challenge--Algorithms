@@ -1,7 +1,6 @@
 #### Please add your answers to the ***Analysis of  Algorithms*** exercises here.
 
 ## Exercise I
-*Something doesn't feel right here... come back to this section later*
 
 a)  
 ~~~

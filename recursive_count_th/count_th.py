@@ -5,9 +5,6 @@ Your function must utilize recursion. It cannot contain any loops.
 '''
 def count_th(word):
     
-    # DELETE: create counter
-    # DELETE: counter = 0
-
     # If the word is less than 2, then throw it away
     if len(word) < 2:
         return 0
