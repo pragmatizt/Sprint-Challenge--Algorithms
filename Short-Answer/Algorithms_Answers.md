@@ -3,14 +3,44 @@
 ## Exercise I
 *Something doesn't feel right here... come back to this section later*
 
-a)  O(n)
-Reason:
+a)  
+~~~
+python   
+a)  a = 0                       
+    while (a < n * n * n):       
+      a = a + n * n             
+~~~
 
-b)  O(n)
-Reason:
+**O(n)** <br>
+**Reason:** <br>
+`a = 0` is O(1).<br>  `while (a < n*n*n):` is O(n).<br>  `a = a + n * n` is O(1).<br>
+I tried removing like terms, but that's high school / college math, and I'm not too confident on that.
+But if I try to get the Big O for each line, the most complext one is O(n) -- and there aren't any nested for loops to increase complexity.  So O(n) is my answer.
 
-c)  O(n)
-Reason:
+b)  
+~~~
+b)  sum = 0                   
+    for i in range(n):         
+      j = 1
+      while j < n:
+        j *= 2
+        sum += 1
+~~~
+
+**O(n)** <br>
+**Reason:** The loop will loop through the range (which is n); so it's O(n).  It's a linear function.
+
+c)  
+~~~
+c)  def bunnyEars(bunnies):     
+      if bunnies == 0:
+        return 0
+
+      return 2 + bunnyEars(bunnies-1)
+~~~
+
+**O(n)** <br>
+**Reason:** The bunnies are incremented by two in each recursion. So that hints that this is a linear function. That tips us off that this is O(n) 
 
 ## Exercise II
 
@@ -18,7 +48,7 @@ Suppose that you have an n-story building and plenty of eggs. Suppose also that 
 
 Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
-ANSWER:
+**ANSWER**:
 (Cheating a bit, using Sprint 3 knowledge on this Sprint 2 content)
 - The floors are sorted, and it always goes up by +1 (floor).
 - Given the bullet point above, a binary search makes sense.
@@ -34,6 +64,7 @@ ANSWER:
 *Originally I thought that dropping an egg from each floor, starting at Floor 0 would make the most sense.
 But then realized that we have a limited supply of eggs; and if we have a skyscraper, that wouldn't work.
 
+**Runtime Complexity**: O(log n)
 
 
 SCRATCH NOTES: Delete later
