@@ -96,7 +96,39 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
+        # First: Light on signifies sorting needs to be done.  Off means everything is sorted.
+        self.set_light_on() # Signifies list not sorted.
+        
+        # Turn light off when robot can no longer move right
+        if self.can_move_right() == False:
+            self.set_light_off()
+
+        # But while light is on:
+        while self.light_is_on():
+            self.swap_item() # Currently holds None, picks up Item
+            while self.can_move_right(): 
+                self.move_right() # Move 1 time to right
+                # Compare current item with item in front of robot
+                if self.compare_item() == 1:
+                    # If current item is > item in front of robot, swap
+                    self.swap_item()
+
+        # Robot reaches the end, so we go all the way back to start.
+        # And while the robot is _still_ holding an item (NOT =! none)
+        while self.can_move_left() and self.compare_item() != None:
+            self.move_left()
+        if self.compare_item() == None:
+
+            self.swap_item()
+            # We again take an item from list to compare
+            self.move_right()
+
+        # The robot is in the end?  Go to sleep, robot
+        if not self.can_move_right():
+            self.set_light_off()
+        else: 
+            self.set_light_on()
+
 
 
 if __name__ == "__main__":
@@ -114,7 +146,7 @@ if __name__ == "__main__":
 
 """
 PSEUDOCODE:
-1. Robot starts at [0], robot picks up item, light comes on
+1. Light comes on, Robot starts at [0], robot picks up item
 2a. Robot compares item holding to next item on right [0] comparing to [1]
     2b. If item robot is comparing to is > than item it is holding: do nothing, move to next item on right
     2c. If item robot is comparing to is < than item it is holding, pick up new item
@@ -124,6 +156,10 @@ PSEUDOCODE:
 5.  Move left until can_move_left returns False (this brings us back to our starting spot)
 6.  [implement counter to signify that this time we're starting at +1 position from 0th element]
 7.  pick up item in [1]th element, recurse process through end of list
+
+** after second attempt, I realize why light is important now.
+We use it as a signal to keep doing the sorting while it is still on.
+
 
 Hint: Bubble Sort would be a good method.
 
